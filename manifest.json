@@ -2,23 +2,23 @@
     "name": "驴妈妈旅游网",
     "short_name": "驴妈妈pwa版",
     "icons": [{
-      "src": "images/logo.png",
+      "src": "./images/logo.png",
         "sizes": "128x128",
         "type": "image/png"
       }, {
-        "src": "images/logo.png",
+        "src": "./images/logo.png",
         "sizes": "144x144",
         "type": "image/png"
       }, {
-        "src": "images/logo.png",
+        "src": "./images/logo.png",
         "sizes": "152x152",
         "type": "image/png"
       }, {
-        "src": "images/logo.png",
+        "src": "./images/logo.png",
         "sizes": "192x192",
         "type": "image/png"
       }, {
-        "src": "images/logo.png",
+        "src": "./images/logo.png",
         "sizes": "256x256",
         "type": "image/png"
       }],

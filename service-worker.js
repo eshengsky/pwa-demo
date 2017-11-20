@@ -1,5 +1,6 @@
 const cacheName = 'lvmama_7.10.8';
 const filesToCache = [
+    './',
     './index.html',
     './scripts/demo.js',
     './styles/demo.css'

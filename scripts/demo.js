@@ -1,3 +1,4 @@
+let swRegistration;
 const action = location.search.replace('?action=', '');
 switch (action) {
     case 'eTicket':
@@ -9,6 +10,7 @@ switch (action) {
     default:
 }
 
+// 分享按钮事件
 document.querySelector('#share')
     .addEventListener('click', () => {
         if (navigator.share === undefined) {
@@ -26,7 +28,22 @@ document.querySelector('#share')
         }
     });
 
-let swRegistration;
+const body = document.querySelector('body');
+const footer = document.querySelector('.offline');
+if (!navigator.onLine) {
+    body.classList.add('offline');
+    footer.style.bottom = '0';
+}
+
+window.ononline = () => {
+    body.classList.remove('offline');
+    footer.style.bottom = '-51px';
+};
+
+window.onoffline = () => {
+    body.classList.add('offline');
+    footer.style.bottom = '0';
+};
 
 // 注册ServiceWorker
 if ('serviceWorker' in navigator) {
@@ -38,6 +55,7 @@ if ('serviceWorker' in navigator) {
 
         });
 
+    // 发送消息按钮事件
     document.querySelector('#sendMsg')
         .addEventListener('click', () => {
             if (swRegistration) {

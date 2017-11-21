@@ -6,3 +6,28 @@
     background: #d30775;
     color: #fff;
 }
+
+body.offline .cmAddClick, body.offline button {
+    -webkit-filter: grayscale(100%);
+    filter: grayscale(100%);
+}
+
+footer.offline {
+    position: fixed;
+    bottom: -51px;
+    transition: all .3s;
+    width: 100%;
+    background: #222;
+    color: #fff;
+    height: 42px;
+    text-align: center;
+    font-size: 14px;
+    padding-top: 3px;
+    box-shadow: 0px 9px 10px 10px #222;
+    z-index: 1000;
+}
+
+footer.offline sub {
+    font-size: 12px;
+    display: block;
+}

@@ -15,11 +15,15 @@ document.querySelector('#sendMsg')
             alert('不支持原生分享！');
             return;
         }
-        navigator.share({
-            title: '驴妈妈旅游网',
-            text: '这是分享内容',
-            url: 'https://m.lvmama.com'
-        });
+        try {
+            navigator.share({
+                title: '驴妈妈旅游网',
+                text: '这是分享内容',
+                url: 'https://m.lvmama.com'
+            });
+        } catch (err) {
+            alert(err);
+        }
     });
 
 // 注册ServiceWorker

@@ -58,10 +58,16 @@ self.addEventListener('notificationclick', e => {
     console.log('[Service Worker] Notification click Received.');
     e.notification.close();
     if (e.action === 'eTicket') {
-        clients.openWindow('./index.html?action=eTicket');
+        e.waitUntil(
+            clients.openWindow('./index.html?action=eTicket')
+        );
     } else if (e.action === 'lvmm') {
-        clients.openWindow('./index.html?action=lvmm');
+        e.waitUntil(
+            clients.openWindow('./index.html?action=lvmm')
+        );
     } else {
-        clients.openWindow('./index.html');
+        e.waitUntil(
+            clients.openWindow('./index.html')
+        );
     }
 });

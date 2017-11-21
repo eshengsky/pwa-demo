@@ -26,18 +26,24 @@ document.querySelector('#share')
         }
     });
 
+let swRegistration;
+
 // 注册ServiceWorker
 if ('serviceWorker' in navigator) {
     navigator.serviceWorker
         .register('./service-worker.js')
-        .then(() => { console.log('Service Worker Registered'); });
+        .then(registration => { 
+            console.log('Service Worker Registered');
+            swRegistration = registration;
+
+        });
 
     document.querySelector('#sendMsg')
         .addEventListener('click', () => {
-            Notification.requestPermission(result => {
-                if (result === 'granted') {
-                    navigator.serviceWorker.ready.then(registration => {
-                        registration.showNotification('驴妈妈旅游网', {
+            if (swRegistration) {
+                Notification.requestPermission(result => {
+                    if (result === 'granted') {
+                        swRegistration.showNotification('驴妈妈旅游网', {
                             body: '出票成功！',
                             actions: [{
                                 action: 'eTicket',
@@ -49,10 +55,10 @@ if ('serviceWorker' in navigator) {
                             icon: './images/logo.png',
                             vibrate: [200, 100, 200, 100, 200, 100, 200]
                         });
-                    });
-                } else {
-                    alert(result);
-                }
-            });
+                    } else {
+                        alert(result);
+                    }
+                });
+            }
         });
 }

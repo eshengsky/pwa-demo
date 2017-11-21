@@ -1,3 +1,14 @@
+const action = location.search.replace('?action=', '');
+switch (action) {
+    case 'eTicket':
+        alert('电子票：xxx');
+        break;
+    case 'lvmm':
+        alert('点击了打开驴妈妈');
+        break;
+    default:
+}
+
 // 注册ServiceWorker
 if ('serviceWorker' in navigator) {
     navigator.serviceWorker

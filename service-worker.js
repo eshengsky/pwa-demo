@@ -65,5 +65,7 @@ self.addEventListener('notificationclick', e => {
         e.waitUntil(
             clients.openWindow('./index.html?action=lvmm')
         );
+    } else {
+        clients.openWindow('./index.html');
     }
 });

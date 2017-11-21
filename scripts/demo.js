@@ -9,11 +9,17 @@ if ('serviceWorker' in navigator) {
             Notification.requestPermission(result => {
                 if (result === 'granted') {
                     navigator.serviceWorker.ready.then(registration => {
-                        registration.showNotification('Vibration Sample', {
-                            body: 'Buzz! Buzz!',
-                            icon: '../images/touch/chrome-touch-icon-192x192.png',
-                            vibrate: [200, 100, 200, 100, 200, 100, 200],
-                            tag: 'vibration-sample'
+                        registration.showNotification('驴妈妈旅游网', {
+                            body: '出票成功！',
+                            actions: [{
+                                action: 'eTicket',
+                                title: '查看电子票'
+                            }, {
+                                action: 'lvmm',
+                                title: '打开驴妈妈'
+                            }],
+                            icon: './images/logo.png',
+                            vibrate: [200, 100, 200, 100, 200, 100, 200]
                         });
                     });
                 } else {

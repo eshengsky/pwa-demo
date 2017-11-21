@@ -6,6 +6,7 @@ const filesToCache = [
     './styles/demo.css'
 ];
 
+// 安装
 self.addEventListener('install', e => {
     console.log('[ServiceWorker] Install');
     e.waitUntil(
@@ -17,6 +18,7 @@ self.addEventListener('install', e => {
     );
 });
 
+// 激活
 self.addEventListener('activate', e => {
     console.log('[ServiceWorker] Activate');
     e.waitUntil(
@@ -42,10 +44,26 @@ self.addEventListener('activate', e => {
     return self.clients.claim();
 });
 
+// 捕获请求
 self.addEventListener('fetch', e => {
     console.log('[Service Worker] Fetch', e.request.url);
     e.respondWith(
         caches.match(e.request)
             .then(response => response || fetch(e.request))
     );
+});
+
+// 点击通知事件
+self.addEventListener('notificationclick', e => {
+    console.log('[Service Worker] Notification click Received.');
+    e.notification.close();
+    if (e.action === 'eTicket') {
+        e.waitUntil(
+            clients.openWindow('./index.html?action=eTicket')
+        );
+    } else if (e.action === 'lvmm') {
+        e.waitUntil(
+            clients.openWindow('./index.html?action=lvmm')
+        );
+    }
 });

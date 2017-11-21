@@ -9,14 +9,14 @@ switch (action) {
     default:
 }
 
-document.querySelector('#sendMsg')
+document.querySelector('#share')
     .addEventListener('click', () => {
         if (navigator.share === undefined) {
             alert('不支持原生分享！');
             return;
         }
         try {
-            await navigator.share({
+            navigator.share({
                 title: '驴妈妈旅游网',
                 text: '这是分享内容',
                 url: 'https://m.lvmama.com'

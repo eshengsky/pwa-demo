@@ -16,7 +16,7 @@ document.querySelector('#sendMsg')
             return;
         }
         try {
-            navigator.share({
+            await navigator.share({
                 title: '驴妈妈旅游网',
                 text: '这是分享内容',
                 url: 'https://m.lvmama.com'

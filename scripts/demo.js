@@ -9,6 +9,19 @@ switch (action) {
     default:
 }
 
+document.querySelector('#sendMsg')
+    .addEventListener('click', () => {
+        if (navigator.share === undefined) {
+            alert('不支持原生分享！');
+            return;
+        }
+        navigator.share({
+            title: '驴妈妈旅游网',
+            text: '这是分享内容',
+            url: 'https://m.lvmama.com'
+        });
+    });
+
 // 注册ServiceWorker
 if ('serviceWorker' in navigator) {
     navigator.serviceWorker
